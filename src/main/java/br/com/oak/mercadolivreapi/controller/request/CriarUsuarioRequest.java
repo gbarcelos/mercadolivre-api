@@ -5,9 +5,11 @@ import br.com.oak.mercadolivreapi.model.Usuario;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
+import lombok.Getter;
 
 public class CriarUsuarioRequest {
 
+  @Getter
   @NotBlank
   @Email
   private String login;
@@ -25,4 +27,5 @@ public class CriarUsuarioRequest {
   public Usuario toModel() {
     return new Usuario(this.login, new SenhaPlainText(this.senha));
   }
+
 }

@@ -27,6 +27,10 @@ public class Usuario {
 
   private LocalDateTime dataHoraCriacao = LocalDateTime.now();
 
+  @Deprecated
+  public Usuario() {
+  }
+
   public Usuario(@NotBlank @Email String login,
       @Valid @NotNull SenhaPlainText senhaPlainText) {
     Assert.hasLength(login, "Login não deve estar em branco");
@@ -42,5 +46,21 @@ public class Usuario {
         ", login='" + login + '\'' +
         ", dataHoraCriacao=" + dataHoraCriacao +
         '}';
+  }
+
+  public Long getId() {
+    return id;
+  }
+
+  public String getLogin() {
+    return login;
+  }
+
+  public String getSenha() {
+    return senha;
+  }
+
+  public LocalDateTime getDataHoraCriacao() {
+    return dataHoraCriacao;
   }
 }
