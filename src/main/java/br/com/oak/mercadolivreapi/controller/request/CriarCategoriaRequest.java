@@ -2,7 +2,7 @@ package br.com.oak.mercadolivreapi.controller.request;
 
 import br.com.oak.mercadolivreapi.annotation.ExistsValue;
 import br.com.oak.mercadolivreapi.annotation.UniqueValue;
-import br.com.oak.mercadolivreapi.model.Categoria;
+import br.com.oak.mercadolivreapi.model.jpa.Categoria;
 import jakarta.validation.constraints.NotBlank;
 import lombok.Getter;
 

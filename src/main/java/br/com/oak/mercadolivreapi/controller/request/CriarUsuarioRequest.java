@@ -1,7 +1,7 @@
 package br.com.oak.mercadolivreapi.controller.request;
 
 import br.com.oak.mercadolivreapi.model.SenhaPlainText;
-import br.com.oak.mercadolivreapi.model.Usuario;
+import br.com.oak.mercadolivreapi.model.jpa.Usuario;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;

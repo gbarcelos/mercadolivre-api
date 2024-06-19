@@ -1,7 +1,7 @@
 package br.com.oak.mercadolivreapi.validator;
 
 import br.com.oak.mercadolivreapi.controller.request.CriarUsuarioRequest;
-import br.com.oak.mercadolivreapi.model.Usuario;
+import br.com.oak.mercadolivreapi.model.jpa.Usuario;
 import br.com.oak.mercadolivreapi.repository.UsuarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;

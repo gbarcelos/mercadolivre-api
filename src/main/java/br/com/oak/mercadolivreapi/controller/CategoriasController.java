@@ -1,7 +1,7 @@
 package br.com.oak.mercadolivreapi.controller;
 
 import br.com.oak.mercadolivreapi.controller.request.CriarCategoriaRequest;
-import br.com.oak.mercadolivreapi.model.Categoria;
+import br.com.oak.mercadolivreapi.model.jpa.Categoria;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import jakarta.transaction.Transactional;

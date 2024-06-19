@@ -1,5 +1,6 @@
-package br.com.oak.mercadolivreapi.model;
+package br.com.oak.mercadolivreapi.model.jpa;
 
+import br.com.oak.mercadolivreapi.model.SenhaPlainText;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -63,4 +64,5 @@ public class Usuario {
   public LocalDateTime getDataHoraCriacao() {
     return dataHoraCriacao;
   }
+
 }

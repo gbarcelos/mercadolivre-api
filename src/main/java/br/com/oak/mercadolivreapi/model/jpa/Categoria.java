@@ -1,4 +1,4 @@
-package br.com.oak.mercadolivreapi.model;
+package br.com.oak.mercadolivreapi.model.jpa;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
