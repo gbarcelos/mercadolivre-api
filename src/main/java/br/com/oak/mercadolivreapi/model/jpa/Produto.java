@@ -22,10 +22,8 @@ import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
 import java.util.stream.Collectors;
-import lombok.Getter;
 import org.springframework.util.Assert;
 
-@Getter
 @Entity
 public class Produto {
 

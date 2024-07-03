@@ -6,22 +6,17 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
 import jakarta.validation.constraints.NotBlank;
-import lombok.Getter;
-import lombok.Setter;
 
 @Entity
 public class Categoria {
 
   @Id
-  @Getter
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long id;
 
-  @Getter
   @NotBlank
   private String nome;
 
-  @Setter
   @ManyToOne
   private Categoria categoriaPai;
 
@@ -44,5 +39,9 @@ public class Categoria {
         ", nome='" + nome + '\'' +
         ", categoriaPai=" + categoriaPai +
         '}';
+  }
+
+  public void setCategoriaPai(Categoria categoriaPai) {
+    this.categoriaPai = categoriaPai;
   }
 }

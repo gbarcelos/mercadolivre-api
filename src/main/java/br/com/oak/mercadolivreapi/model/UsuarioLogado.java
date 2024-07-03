@@ -5,12 +5,10 @@ import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotNull;
 import java.util.Collection;
 import java.util.List;
-import lombok.ToString;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 
-@ToString
 public class UsuarioLogado implements UserDetails {
 
   private final Usuario usuario;

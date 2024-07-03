@@ -5,11 +5,9 @@ import br.com.oak.mercadolivreapi.model.jpa.Produto;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
-import lombok.Getter;
 
 public class CriarCaracteristicaRequest {
 
-  @Getter
   @NotBlank
   private String nome;
 
@@ -23,5 +21,9 @@ public class CriarCaracteristicaRequest {
 
   public CaracteristicaProduto toModel(@NotNull @Valid Produto produto) {
     return new CaracteristicaProduto(nome, descricao, produto);
+  }
+
+  public String getNome() {
+    return nome;
   }
 }
