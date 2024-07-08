@@ -3,7 +3,7 @@ package br.com.oak.mercadolivreapi.controller;
 import br.com.oak.mercadolivreapi.controller.request.CriarProdutRequest;
 import br.com.oak.mercadolivreapi.model.UsuarioLogado;
 import br.com.oak.mercadolivreapi.model.jpa.Produto;
-import br.com.oak.mercadolivreapi.validator.RestringeNomesIguaisValidator;
+import br.com.oak.mercadolivreapi.validator.RestringeCaracteristicasComNomesIguaisValidator;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import jakarta.transaction.Transactional;
@@ -26,7 +26,7 @@ public class ProdutosController {
 
   @InitBinder
   public void init(WebDataBinder binder) {
-    binder.addValidators(new RestringeNomesIguaisValidator());
+    binder.addValidators(new RestringeCaracteristicasComNomesIguaisValidator());
   }
 
   @PostMapping

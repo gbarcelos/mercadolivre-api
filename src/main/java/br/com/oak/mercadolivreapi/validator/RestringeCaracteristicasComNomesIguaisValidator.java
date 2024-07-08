@@ -5,7 +5,7 @@ import java.util.Set;
 import org.springframework.validation.Errors;
 import org.springframework.validation.Validator;
 
-public class RestringeNomesIguaisValidator implements Validator {
+public class RestringeCaracteristicasComNomesIguaisValidator implements Validator {
 
   @Override
   public boolean supports(Class<?> clazz) {

@@ -80,4 +80,8 @@ public class CriarProdutRequest {
     }
     return resultado;
   }
+
+  public List<CriarCaracteristicaRequest> getCaracteristicas() {
+    return caracteristicas;
+  }
 }
