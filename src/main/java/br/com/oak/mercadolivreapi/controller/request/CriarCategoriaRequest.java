@@ -23,6 +23,14 @@ public class CriarCategoriaRequest {
     this.nome = nome;
   }
 
+  public Long getCategoriaPaiId() {
+    return categoriaPaiId;
+  }
+
+  public String getNome() {
+    return nome;
+  }
+
   public Categoria toModel() {
     Categoria categoria = new Categoria(this.nome);
     if (categoriaPaiId != null) {

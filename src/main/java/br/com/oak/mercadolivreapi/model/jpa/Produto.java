@@ -58,6 +58,9 @@ public class Produto {
   @OneToMany(mappedBy = "produto", cascade = CascadeType.PERSIST)
   private Set<CaracteristicaProduto> caracteristicas = new HashSet<>();
 
+  @OneToMany(mappedBy = "produto", cascade = CascadeType.MERGE)
+  private Set<ImagemProduto> imagens = new HashSet<>();
+
   private LocalDateTime dataHoraCriacao = LocalDateTime.now();
 
   @Deprecated
@@ -79,6 +82,52 @@ public class Produto {
     this.caracteristicas.addAll(criarCaracteristicaRequest.stream().map(caracteristica -> caracteristica.toModel(this))
         .collect(Collectors.toSet()));
     Assert.isTrue(this.caracteristicas.size() >= 3, "Todo produto precisa ter no minimo 3 caracteristicas");
+  }
+
+  public void adicionaImagens(Set<String> links) {
+    Assert.isTrue(!links.isEmpty(), "Precisa existir imagens para adicionar ao produto");
+    this.imagens.addAll(links.stream().map(link -> new ImagemProduto(this, link))
+        .collect(Collectors.toSet()));
+  }
+
+  public Long getId() {
+    return id;
+  }
+
+  public String getNome() {
+    return nome;
+  }
+
+  public BigDecimal getValor() {
+    return valor;
+  }
+
+  public Integer getQuantidade() {
+    return quantidade;
+  }
+
+  public String getDescricao() {
+    return descricao;
+  }
+
+  public Categoria getCategoria() {
+    return categoria;
+  }
+
+  public Usuario getUsuarioCriacao() {
+    return usuarioCriacao;
+  }
+
+  public Set<CaracteristicaProduto> getCaracteristicas() {
+    return caracteristicas;
+  }
+
+  public Set<ImagemProduto> getImagens() {
+    return imagens;
+  }
+
+  public LocalDateTime getDataHoraCriacao() {
+    return dataHoraCriacao;
   }
 
   @Override
@@ -109,7 +158,12 @@ public class Produto {
         ", categoria=" + categoria +
         ", usuarioCriacao=" + usuarioCriacao +
         ", caracteristicas=" + caracteristicas +
+        ", imagens=" + imagens +
         ", dataHoraCriacao=" + dataHoraCriacao +
         '}';
+  }
+
+  public boolean pertenceAoUsuario(Usuario usuarioLogado) {
+    return this.usuarioCriacao.equals(usuarioLogado);
   }
 }

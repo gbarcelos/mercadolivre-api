@@ -18,7 +18,7 @@ class CriarProdutRequestTest {
   public void deveCriarProdutoComDiversasCaracteristicas(int esperado,
       List<CriarCaracteristicaRequest> caracteristicas) {
 
-    CriarProdutRequest request = new CriarProdutRequest("nome do produto",
+    CriarProdutoRequest request = new CriarProdutoRequest("nome do produto",
         new BigDecimal("10.5"),
         10,
         "descricao produto",

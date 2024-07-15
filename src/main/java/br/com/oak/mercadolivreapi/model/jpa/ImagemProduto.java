@@ -9,50 +9,43 @@ import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import java.util.Objects;
+import org.hibernate.validator.constraints.URL;
 
 @Entity
-public class CaracteristicaProduto {
+public class ImagemProduto {
 
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long id;
-
-  @NotBlank
-  private String nome;
-
-  @NotBlank
-  private String descricao;
 
   @Valid
   @NotNull
   @ManyToOne
   private Produto produto;
 
+  @URL
+  @NotBlank
+  private String link;
+
   @Deprecated
-  public CaracteristicaProduto() {
+  public ImagemProduto() {
   }
 
-  public CaracteristicaProduto(@NotBlank String nome, @NotBlank String descricao,
-      @NotNull @Valid Produto produto) {
-    this.nome = nome;
-    this.descricao = descricao;
+  public ImagemProduto(@NotNull @Valid Produto produto, @URL @NotBlank String link) {
     this.produto = produto;
+    this.link = link;
   }
 
   public Long getId() {
     return id;
   }
 
-  public String getNome() {
-    return nome;
-  }
-
-  public String getDescricao() {
-    return descricao;
-  }
-
   public Produto getProduto() {
     return produto;
+  }
+
+  public String getLink() {
+    return link;
   }
 
   @Override
@@ -63,22 +56,21 @@ public class CaracteristicaProduto {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    CaracteristicaProduto that = (CaracteristicaProduto) o;
-    return Objects.equals(nome, that.nome) && Objects.equals(produto,
-        that.produto);
+    ImagemProduto that = (ImagemProduto) o;
+    return Objects.equals(produto, that.produto) && Objects.equals(link,
+        that.link);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(nome, produto);
+    return Objects.hash(produto, link);
   }
 
   @Override
   public String toString() {
-    return "CaracteristicaProduto{" +
+    return "ImagemProduto{" +
         "id=" + id +
-        ", nome='" + nome + '\'' +
-        ", descricao='" + descricao + '\'' +
+        ", link='" + link + '\'' +
         '}';
   }
 }

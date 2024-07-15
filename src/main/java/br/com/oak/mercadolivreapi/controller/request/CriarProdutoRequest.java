@@ -18,7 +18,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-public class CriarProdutRequest {
+public class CriarProdutoRequest {
 
   @NotBlank
   @UniqueValue(domainClass = Produto.class, fieldName = "nome")
@@ -46,10 +46,10 @@ public class CriarProdutRequest {
   private List<CriarCaracteristicaRequest> caracteristicas = new ArrayList<>();
 
   @Deprecated
-  public CriarProdutRequest() {
+  public CriarProdutoRequest() {
   }
 
-  public CriarProdutRequest(String nome, BigDecimal valor, Integer quantidade, String descricao,
+  public CriarProdutoRequest(String nome, BigDecimal valor, Integer quantidade, String descricao,
       Long categoriaId, List<CriarCaracteristicaRequest> caracteristicas) {
     this.nome = nome;
     this.valor = valor;
@@ -57,6 +57,26 @@ public class CriarProdutRequest {
     this.descricao = descricao;
     this.categoriaId = categoriaId;
     this.caracteristicas.addAll(caracteristicas);
+  }
+
+  public String getNome() {
+    return nome;
+  }
+
+  public BigDecimal getValor() {
+    return valor;
+  }
+
+  public Integer getQuantidade() {
+    return quantidade;
+  }
+
+  public String getDescricao() {
+    return descricao;
+  }
+
+  public Long getCategoriaId() {
+    return categoriaId;
   }
 
   public Produto toModel(Usuario usuarioCriacao) {

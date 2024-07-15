@@ -11,4 +11,13 @@ public class LoginInputDto {
     return new UsernamePasswordAuthenticationToken(this.email,
         this.password);
   }
+
+  public String getEmail() {
+    return email;
+  }
+
+  public String getPassword() {
+    return password;
+  }
+
 }

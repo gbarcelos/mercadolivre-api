@@ -32,6 +32,22 @@ public class Categoria {
     this.id = id;
   }
 
+  public void setCategoriaPai(Categoria categoriaPai) {
+    this.categoriaPai = categoriaPai;
+  }
+
+  public Long getId() {
+    return id;
+  }
+
+  public String getNome() {
+    return nome;
+  }
+
+  public Categoria getCategoriaPai() {
+    return categoriaPai;
+  }
+
   @Override
   public String toString() {
     return "Categoria{" +
@@ -39,9 +55,5 @@ public class Categoria {
         ", nome='" + nome + '\'' +
         ", categoriaPai=" + categoriaPai +
         '}';
-  }
-
-  public void setCategoriaPai(Categoria categoriaPai) {
-    this.categoriaPai = categoriaPai;
   }
 }

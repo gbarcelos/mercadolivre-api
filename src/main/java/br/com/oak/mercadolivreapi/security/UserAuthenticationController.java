@@ -38,7 +38,7 @@ public class UserAuthenticationController {
       String jwt = tokenManager.generateToken(authentication);
       return ResponseEntity.ok(jwt);
     } catch (AuthenticationException e) {
-      log.error("[Autenticacao] {}", e);
+      log.error("[Autenticacao] {}", e.getMessage(), e);
       return ResponseEntity.badRequest().build();
     }
   }

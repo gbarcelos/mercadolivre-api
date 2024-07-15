@@ -4,7 +4,7 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import br.com.oak.mercadolivreapi.controller.request.CriarCaracteristicaRequest;
-import br.com.oak.mercadolivreapi.controller.request.CriarProdutRequest;
+import br.com.oak.mercadolivreapi.controller.request.CriarProdutoRequest;
 import java.math.BigDecimal;
 import java.util.List;
 import org.junit.jupiter.api.DisplayName;
@@ -21,7 +21,7 @@ class RestringeCaracteristicasComNomesIguaisValidatorTest {
         new CriarCaracteristicaRequest("nome 1", "descricao 1"),
         new CriarCaracteristicaRequest("nome 1", "descricao 1"));
 
-    CriarProdutRequest criarProdutRequest = new CriarProdutRequest("nome do produto",
+    CriarProdutoRequest criarProdutRequest = new CriarProdutoRequest("nome do produto",
         new BigDecimal("10.5"),
         10,
         "descricao produto",
@@ -46,7 +46,7 @@ class RestringeCaracteristicasComNomesIguaisValidatorTest {
         new CriarCaracteristicaRequest("nome 1", "descricao 1"),
         new CriarCaracteristicaRequest("nome 2", "descricao 2"));
 
-    CriarProdutRequest criarProdutRequest = new CriarProdutRequest("nome do produto",
+    CriarProdutoRequest criarProdutRequest = new CriarProdutoRequest("nome do produto",
         new BigDecimal("10.5"),
         10,
         "descricao produto",

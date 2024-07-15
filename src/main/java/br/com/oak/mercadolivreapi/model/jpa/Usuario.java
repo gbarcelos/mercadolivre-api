@@ -10,6 +10,7 @@ import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import java.time.LocalDateTime;
+import java.util.Objects;
 import org.springframework.util.Assert;
 
 @Entity
@@ -40,15 +41,6 @@ public class Usuario {
     this.senha = senhaPlainText.hash();
   }
 
-  @Override
-  public String toString() {
-    return "Usuario{" +
-        "id=" + id +
-        ", login='" + login + '\'' +
-        ", dataHoraCriacao=" + dataHoraCriacao +
-        '}';
-  }
-
   public Long getId() {
     return id;
   }
@@ -65,4 +57,29 @@ public class Usuario {
     return dataHoraCriacao;
   }
 
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) {
+      return true;
+    }
+    if (o == null || getClass() != o.getClass()) {
+      return false;
+    }
+    Usuario usuario = (Usuario) o;
+    return Objects.equals(id, usuario.id);
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hash(id);
+  }
+
+  @Override
+  public String toString() {
+    return "Usuario{" +
+        "id=" + id +
+        ", login='" + login + '\'' +
+        ", dataHoraCriacao=" + dataHoraCriacao +
+        '}';
+  }
 }

@@ -26,4 +26,8 @@ public class CriarCaracteristicaRequest {
   public String getNome() {
     return nome;
   }
+
+  public String getDescricao() {
+    return descricao;
+  }
 }
