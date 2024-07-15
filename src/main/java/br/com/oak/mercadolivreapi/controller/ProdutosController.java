@@ -1,12 +1,12 @@
 package br.com.oak.mercadolivreapi.controller;
 
 import br.com.oak.mercadolivreapi.controller.request.AdicionaImagensRequest;
+import br.com.oak.mercadolivreapi.controller.request.AvaliarProdutoRequest;
 import br.com.oak.mercadolivreapi.controller.request.CriarProdutoRequest;
 import br.com.oak.mercadolivreapi.controller.response.ProdutoResponse;
 import br.com.oak.mercadolivreapi.model.UsuarioLogado;
 import br.com.oak.mercadolivreapi.model.jpa.Produto;
 import br.com.oak.mercadolivreapi.storage.Uploader;
-import br.com.oak.mercadolivreapi.storage.UploaderFake;
 import br.com.oak.mercadolivreapi.validator.RestringeCaracteristicasComNomesIguaisValidator;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;

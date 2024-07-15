@@ -90,6 +90,10 @@ public class Produto {
         .collect(Collectors.toSet()));
   }
 
+  public boolean pertenceAoUsuario(Usuario usuarioLogado) {
+    return this.usuarioCriacao.equals(usuarioLogado);
+  }
+
   public Long getId() {
     return id;
   }
@@ -161,9 +165,5 @@ public class Produto {
         ", imagens=" + imagens +
         ", dataHoraCriacao=" + dataHoraCriacao +
         '}';
-  }
-
-  public boolean pertenceAoUsuario(Usuario usuarioLogado) {
-    return this.usuarioCriacao.equals(usuarioLogado);
   }
 }
