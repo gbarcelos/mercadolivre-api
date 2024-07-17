@@ -54,7 +54,7 @@ public class ApiErrorHandler {
   @ResponseStatus(HttpStatus.BAD_REQUEST)
   @ExceptionHandler(HttpMessageNotReadableException.class)
   public ErrorsDto handleValidationError(HttpMessageNotReadableException exception) {
-    log.error("Problema na de desserializar o objeto", exception);
+    log.error("Problema ao desserializar o objeto", exception);
 
     InvalidFormatException invalidFormat = (InvalidFormatException) exception.getCause();
 
