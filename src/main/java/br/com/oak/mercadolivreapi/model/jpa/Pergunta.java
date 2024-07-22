@@ -9,6 +9,7 @@ import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import java.time.LocalDateTime;
+import java.util.Objects;
 
 @Entity
 public class Pergunta {
@@ -59,5 +60,23 @@ public class Pergunta {
 
   public LocalDateTime getDataHoraCriacao() {
     return dataHoraCriacao;
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) {
+      return true;
+    }
+    if (o == null || getClass() != o.getClass()) {
+      return false;
+    }
+    Pergunta pergunta = (Pergunta) o;
+    return Objects.equals(titulo, pergunta.titulo) && Objects.equals(produto,
+        pergunta.produto) && Objects.equals(usuario, pergunta.usuario);
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hash(titulo, produto, usuario);
   }
 }

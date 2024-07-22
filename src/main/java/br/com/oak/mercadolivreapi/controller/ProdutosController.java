@@ -1,8 +1,8 @@
 package br.com.oak.mercadolivreapi.controller;
 
 import br.com.oak.mercadolivreapi.controller.request.AdicionaImagensRequest;
-import br.com.oak.mercadolivreapi.controller.request.AvaliarProdutoRequest;
 import br.com.oak.mercadolivreapi.controller.request.CriarProdutoRequest;
+import br.com.oak.mercadolivreapi.controller.response.DetalhaProdutoResponse;
 import br.com.oak.mercadolivreapi.controller.response.ProdutoResponse;
 import br.com.oak.mercadolivreapi.model.UsuarioLogado;
 import br.com.oak.mercadolivreapi.model.jpa.Produto;
@@ -18,6 +18,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.WebDataBinder;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -67,5 +68,11 @@ public class ProdutosController {
     entityManager.merge(produto);
 
     return ResponseEntity.ok().body(new ProdutoResponse(produto));
+  }
+
+  @GetMapping("/{id}")
+  public ResponseEntity<DetalhaProdutoResponse> detalhaProduto(@PathVariable Long id) {
+    Produto produto = entityManager.find(Produto.class, id);
+    return ResponseEntity.ok().body(new DetalhaProdutoResponse(produto));
   }
 }

@@ -1,6 +1,8 @@
 package br.com.oak.mercadolivreapi.model.jpa;
 
 import br.com.oak.mercadolivreapi.controller.request.CriarCaracteristicaRequest;
+import br.com.oak.mercadolivreapi.controller.response.CaracteristicaResponse;
+import br.com.oak.mercadolivreapi.model.Avaliacoes;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -21,7 +23,9 @@ import java.util.Collection;
 import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
+import java.util.function.Function;
 import java.util.stream.Collectors;
+import java.util.stream.DoubleStream;
 import org.springframework.util.Assert;
 
 @Entity
@@ -47,11 +51,13 @@ public class Produto {
   @Size(min = 1, max = 1000)
   private String descricao;
 
-  @NotNull  @Valid
+  @NotNull
+  @Valid
   @ManyToOne
   private Categoria categoria;
 
-  @NotNull  @Valid
+  @NotNull
+  @Valid
   @ManyToOne
   private Usuario usuarioCriacao;
 
@@ -60,6 +66,12 @@ public class Produto {
 
   @OneToMany(mappedBy = "produto", cascade = CascadeType.MERGE)
   private Set<ImagemProduto> imagens = new HashSet<>();
+
+  @OneToMany(mappedBy = "produto")
+  private Set<Pergunta> perguntas = new HashSet<>();
+
+  @OneToMany(mappedBy = "produto")
+  private Set<Avaliacao> avaliacoes = new HashSet<>();
 
   private LocalDateTime dataHoraCriacao = LocalDateTime.now();
 
@@ -79,9 +91,11 @@ public class Produto {
     this.descricao = descricao;
     this.categoria = categoria;
     this.usuarioCriacao = usuarioCriacao;
-    this.caracteristicas.addAll(criarCaracteristicaRequest.stream().map(caracteristica -> caracteristica.toModel(this))
-        .collect(Collectors.toSet()));
-    Assert.isTrue(this.caracteristicas.size() >= 3, "Todo produto precisa ter no minimo 3 caracteristicas");
+    this.caracteristicas.addAll(
+        criarCaracteristicaRequest.stream().map(caracteristica -> caracteristica.toModel(this))
+            .collect(Collectors.toSet()));
+    Assert.isTrue(this.caracteristicas.size() >= 3,
+        "Todo produto precisa ter no minimo 3 caracteristicas");
   }
 
   public void adicionaImagens(Set<String> links) {
@@ -106,32 +120,24 @@ public class Produto {
     return valor;
   }
 
-  public Integer getQuantidade() {
-    return quantidade;
-  }
-
   public String getDescricao() {
     return descricao;
   }
 
-  public Categoria getCategoria() {
-    return categoria;
+  public Avaliacoes getAvaliacoes() {
+    return new Avaliacoes(avaliacoes);
   }
 
-  public Usuario getUsuarioCriacao() {
-    return usuarioCriacao;
+  public <T> Set<T> mapCaracteristicas(Function<CaracteristicaProduto, T> mapper) {
+    return this.caracteristicas.stream().map(mapper).collect(Collectors.toSet());
   }
 
-  public Set<CaracteristicaProduto> getCaracteristicas() {
-    return caracteristicas;
+  public <T> Set<T> mapImagens(Function<ImagemProduto, T> mapper) {
+    return this.imagens.stream().map(mapper).collect(Collectors.toSet());
   }
 
-  public Set<ImagemProduto> getImagens() {
-    return imagens;
-  }
-
-  public LocalDateTime getDataHoraCriacao() {
-    return dataHoraCriacao;
+  public  <T> Set<T> mapPerguntas(Function<Pergunta, T> mapper) {
+    return this.perguntas.stream().map(mapper).collect(Collectors.toSet());
   }
 
   @Override

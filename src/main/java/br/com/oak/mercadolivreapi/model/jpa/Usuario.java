@@ -66,12 +66,12 @@ public class Usuario {
       return false;
     }
     Usuario usuario = (Usuario) o;
-    return Objects.equals(id, usuario.id);
+    return Objects.equals(login, usuario.login);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id);
+    return Objects.hash(login);
   }
 
   @Override

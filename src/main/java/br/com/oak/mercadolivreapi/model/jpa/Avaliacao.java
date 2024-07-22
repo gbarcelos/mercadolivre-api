@@ -11,6 +11,7 @@ import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
+import java.util.Objects;
 
 @Entity
 public class Avaliacao {
@@ -75,5 +76,24 @@ public class Avaliacao {
 
   public Usuario getUsuario() {
     return usuario;
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) {
+      return true;
+    }
+    if (o == null || getClass() != o.getClass()) {
+      return false;
+    }
+    Avaliacao avaliacao = (Avaliacao) o;
+    return Objects.equals(titulo, avaliacao.titulo) && Objects.equals(descricao,
+        avaliacao.descricao) && Objects.equals(produto, avaliacao.produto)
+        && Objects.equals(usuario, avaliacao.usuario);
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hash(titulo, descricao, produto, usuario);
   }
 }
