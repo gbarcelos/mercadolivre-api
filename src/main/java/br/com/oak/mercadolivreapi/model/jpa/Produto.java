@@ -128,6 +128,10 @@ public class Produto {
     return new Avaliacoes(avaliacoes);
   }
 
+  public Usuario getUsuarioCriacao() {
+    return usuarioCriacao;
+  }
+
   public <T> Set<T> mapCaracteristicas(Function<CaracteristicaProduto, T> mapper) {
     return this.caracteristicas.stream().map(mapper).collect(Collectors.toSet());
   }
@@ -136,8 +140,17 @@ public class Produto {
     return this.imagens.stream().map(mapper).collect(Collectors.toSet());
   }
 
-  public  <T> Set<T> mapPerguntas(Function<Pergunta, T> mapper) {
+  public <T> Set<T> mapPerguntas(Function<Pergunta, T> mapper) {
     return this.perguntas.stream().map(mapper).collect(Collectors.toSet());
+  }
+
+  public boolean abateEstoque(@Positive Integer quantidade) {
+    Assert.isTrue(quantidade > 0, "A quantidade deve ser maior que zero");
+    if (quantidade <= this.quantidade) {
+      this.quantidade -= quantidade;
+      return true;
+    }
+    return false;
   }
 
   @Override
