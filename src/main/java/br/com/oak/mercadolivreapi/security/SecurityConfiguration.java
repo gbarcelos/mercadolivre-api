@@ -39,6 +39,8 @@ public class SecurityConfiguration {
             .requestMatchers(HttpMethod.GET, "/produtos/{id:[0-9]+}").permitAll()
             .requestMatchers(HttpMethod.POST, "/usuarios").permitAll()
             .requestMatchers("/api/auth/**").permitAll()
+            .requestMatchers(HttpMethod.POST,"/retorno-pagseguro/{id:[0-9]+}").permitAll()
+            .requestMatchers(HttpMethod.POST,"/retorno-paypal/{id:[0-9]+}").permitAll()
             .anyRequest().authenticated()
         )
         .sessionManagement(manager -> manager.sessionCreationPolicy(STATELESS))

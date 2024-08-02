@@ -10,9 +10,9 @@ public enum GatewayPagamento {
         UriComponentsBuilder uriComponentsBuilder) {
       var urlRetornoPagseguro = uriComponentsBuilder
           .path("/retorno-pagseguro/{id}")
-          .buildAndExpand(compra.getIdentificador()).toString();
+          .buildAndExpand(compra.getId()).toString();
 
-      return "pagseguro.com/" + compra.getIdentificador() + "?redirectUrl="
+      return "pagseguro.com/" + compra.getId() + "?redirectUrl="
           + urlRetornoPagseguro;
     }
   },
@@ -21,10 +21,10 @@ public enum GatewayPagamento {
     public String criaUrlRetorno(Compra compra,
         UriComponentsBuilder uriComponentsBuilder) {
       var urlRetornoPaypal = uriComponentsBuilder
-          .path("/retorno-paypal/{id}").buildAndExpand(compra.getIdentificador())
+          .path("/retorno-paypal/{id}").buildAndExpand(compra.getId())
           .toString();
 
-      return "paypal.com/" + compra.getIdentificador() + "?redirectUrl=" + urlRetornoPaypal;
+      return "paypal.com/" + compra.getId() + "?redirectUrl=" + urlRetornoPaypal;
     }
   };
 
